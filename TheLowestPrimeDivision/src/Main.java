@@ -11,5 +11,6 @@ public class Main {
                 break;
             }
         }
+        System.out.println("This is solution when \"number\" is Long!");
     }
 }
