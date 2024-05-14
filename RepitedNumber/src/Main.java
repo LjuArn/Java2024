@@ -16,10 +16,11 @@ public class Main {
             String[] numbers = inputNumbers.split(" ");
 
             HashMap<Integer, String> countedNumbers = new HashMap<Integer, String>();
-            
+
             for (int j = 0; j < countOfNumbers; j++) {
                 countedNumbers.put(j, numbers[j]);
             }
+            
             for (Integer j : countedNumbers.keySet()) {
                 System.out.println("key: " + j + " value: " + countedNumbers.get(j));
             }
