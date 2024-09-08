@@ -1,9 +1,7 @@
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
 
         Scanner scanner = new Scanner(System.in);
         int countOfInputs = Integer.parseInt(scanner.nextLine());
@@ -15,19 +13,33 @@ public class Main {
             String inputNumbers = scanner.nextLine();
             String[] numbers = inputNumbers.split(" ");
 
-            HashMap<Integer, String> countedNumbers = new HashMap<Integer, String>();
+            HashMap<String, Integer> countedNumbers = new HashMap<String, Integer>();
 
             for (int j = 0; j < countOfNumbers; j++) {
-                countedNumbers.put(j, numbers[j]);
+
+                if (countedNumbers.containsKey(numbers[j])) {
+                    Integer value = countedNumbers.get(numbers[j]) + 1;
+                    countedNumbers.put(numbers[j], value);
+                } else {
+                    countedNumbers.put(numbers[j], 1);
+                }
             }
-            
-            for (Integer j : countedNumbers.keySet()) {
+
+            int maxValue = Collections.max(countedNumbers.values());
+            List<String> minKeyList = new ArrayList<>();
+
+            for (String j : countedNumbers.keySet()) {
+                if (countedNumbers.get(j) == maxValue) {
+                    minKeyList.add(j);
+                }
+            }
+            System.out.println(minKeyList);
+            System.out.println(maxValue);
+            System.out.println("Answer of test: " + Collections.min(minKeyList));
+
+            for (String j : countedNumbers.keySet()) {
                 System.out.println("key: " + j + " value: " + countedNumbers.get(j));
             }
-
         }
-
-
-        System.out.println("Hello world!");
     }
 }
